@@ -40,7 +40,7 @@ module.exports.uploadErrors = (err) => {
         errors.format = "Format non pris en charge"
     }
     if(err.message.includes('max size')) {
-        errors.maxSize = "Le fichier dépass 500ko"
+        errors.maxSize = "Le fichier dépasse 500ko"
     }
     return errors
 }

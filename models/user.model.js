@@ -25,6 +25,13 @@ const userSchema = new mongoose.Schema(
             maxLength: 100,
             minLength: 8
         },
+        picture: {
+            type: String,
+        },
+        bio: {
+            type: String,
+            maxLength: 500,
+        },
         likes: {
             type: [String]
         }

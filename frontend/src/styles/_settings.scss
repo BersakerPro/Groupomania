@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+//Police
+$font : 'Lato', sans-serif;
+
+//Couleur
+$color-primary: #FD2D01;
+$color-secondary: #FFD7D7;
+$color-tertiary: #4E5166;
+
+//Général
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style-type: none;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    font-family: $font;
+}

@@ -1,0 +1,102 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  list-style-type: none;
+  outline: none;
+  border: none;
+  text-decoration: none;
+  font-family: "Lato", sans-serif;
+}
+
+.profil-page {
+  margin: 50px auto;
+}
+
+.profil-page .log-container {
+  text-align: center;
+}
+
+.profil-page .form-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.profil-page .form-container ul {
+  margin: 2%;
+  width: 20%;
+  height: 400px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.profil-page .form-container ul li {
+  margin: 20px auto;
+  padding: 15px;
+  width: 70%;
+  height: 50px;
+  background-color: #FFD7D7;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+.profil-page .form-container .active-btn {
+  background-color: #FD2D01;
+}
+
+.profil-page .form-container #signup-form {
+  width: 20%;
+  margin: 2%;
+  padding: 1%;
+  border-radius: 20px;
+  background-color: #FFD7D7;
+}
+
+.profil-page .form-container #signup-form #pseudo,
+.profil-page .form-container #signup-form #email,
+.profil-page .form-container #signup-form #password,
+.profil-page .form-container #signup-form #confirm-password {
+  border-radius: 20px;
+  width: 50%;
+  height: 30px;
+  margin: 9px;
+}
+
+.profil-page .form-container #signup-form #submit {
+  width: 60%;
+  height: 30px;
+  border-radius: 20px;
+  font-size: 1.1em;
+  cursor: pointer;
+}
+
+.profil-page .form-container #signup-form #submit:hover {
+  background-color: #FD2D01;
+  color: white;
+}
+
+.profil-page .form-container #signup-form .email-error,
+.profil-page .form-container #signup-form .password-error,
+.profil-page .form-container #signup-form .pseudoError,
+.profil-page .form-container #signup-form .emailError,
+.profil-page .form-container #signup-form .passwordError,
+.profil-page .form-container #signup-form .confPasswordError,
+.profil-page .form-container #signup-form .conditionError {
+  color: #FD2D01;
+  font-weight: bold;
+}
+/*# sourceMappingURL=index.css.map */

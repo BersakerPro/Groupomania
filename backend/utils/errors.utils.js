@@ -8,7 +8,7 @@ module.exports.signUpErrors = (err) => {
         errors.email = "Email incorrect "
     }
     if (err.message.includes('password')) {
-        errors.password = "Mot de passe non conforme"
+        errors.password = "Le mot de passe doit comporter au moins 8 caractères"
     }
     if (err.code === 11000 && Object.keys(err.keyValue)[0].includes('pseudo')) {
         errors.pseudo = "Pseudo déjà utilisé"
@@ -23,10 +23,10 @@ module.exports.signUpErrors = (err) => {
 module.exports.signInErrors = (err) => {
     let errors = {email: '', password: ''}
 
-    if (err.message.includes("email")) {
+    if (err.message.includes("Email")) {
         errors.email = "Email inconnu"
     }
-    if (err.message.includes("password")) {
+    if (err.message.includes("Mot")) {
         errors.password = "Mot de passe incorrect"
     }
     return errors;

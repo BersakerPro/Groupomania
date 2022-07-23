@@ -1,0 +1,36 @@
+nav {
+    height: 150px;
+    border-bottom: 2px solid $color-primary;
+    box-shadow: 0 0 15px $color-tertiary;
+    
+
+    .nav-container{
+        height: 150px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .logo img{
+            margin: 50px;
+            width: 400px;
+        }
+
+        ul{
+            width: 50%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            h4{
+                font-size: 1.5em;
+                color: $color-tertiary;
+            }
+        }
+
+        .icon-connect{
+            margin: 50px;
+            width: 50px;
+            cursor: pointer;
+        }
+    }
+}

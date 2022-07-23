@@ -99,4 +99,53 @@
   color: #FD2D01;
   font-weight: bold;
 }
+
+nav {
+  height: 150px;
+  border-bottom: 2px solid #FD2D01;
+  -webkit-box-shadow: 0 0 15px #4E5166;
+          box-shadow: 0 0 15px #4E5166;
+}
+
+nav .nav-container {
+  height: 150px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+nav .nav-container .logo img {
+  margin: 50px;
+  width: 400px;
+}
+
+nav .nav-container ul {
+  width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+nav .nav-container ul h4 {
+  font-size: 1.5em;
+  color: #4E5166;
+}
+
+nav .nav-container .icon-connect {
+  margin: 50px;
+  width: 50px;
+  cursor: pointer;
+}
 /*# sourceMappingURL=index.css.map */

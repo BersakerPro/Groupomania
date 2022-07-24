@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { dateParser, isEmpty } from '../Utils';
+import LikeButton from './LikeButton';
 
 const Card = ({ post }) => {
 
@@ -62,7 +63,7 @@ const Card = ({ post }) => {
                                     title={post._id}></iframe>
                             )}
                         <div className='card-footer'>
-                            <h6>Like button</h6>
+                            <LikeButton post ={post} />
                         </div>
                         </div>
                     </>

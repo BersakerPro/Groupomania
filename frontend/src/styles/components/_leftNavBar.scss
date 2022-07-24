@@ -1,0 +1,45 @@
+.left-nav-container {
+    position: relative;
+  
+    .icons {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      border: 2px solid $color-primary;
+      border-top: none;
+      box-shadow: -5px 5px 10px $color-tertiary;
+      border-radius: 15px;
+      height: 200px;
+      width: 70px;
+      margin-left: 10px;
+
+      a {
+        transition: 0.1s;
+        display: inline-block;
+
+        img {
+          width: 50px;
+          @media screen and(max-width: 590px) {
+            height: 34px;
+            width: 34px;
+          }
+        }
+
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+
+      .active-nav {
+        border-left: solid 3px $color-primary;
+        margin-left: 2px;
+      }
+  
+      @media screen and(max-width: 590px) {
+        margin: 2px 0 0 -9px;
+      }
+    }
+}
+
+      

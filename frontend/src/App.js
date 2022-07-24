@@ -28,7 +28,7 @@ const App = () => {
     dispatch(getUser(userid))
   }
 
-  }, [userid]);
+  }, [userid, dispatch]);
 
   return (
     <UseridContext.Provider value={userid}>

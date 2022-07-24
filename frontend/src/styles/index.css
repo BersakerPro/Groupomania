@@ -108,6 +108,7 @@ nav {
 }
 
 nav .nav-container {
+  position: absolute;
   height: 150px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -147,5 +148,64 @@ nav .nav-container .icon-connect {
   margin: 50px;
   width: 50px;
   cursor: pointer;
+}
+
+.left-nav-container {
+  position: relative;
+}
+
+.left-nav-container .icons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+  border: 2px solid #FD2D01;
+  border-top: none;
+  -webkit-box-shadow: -5px 5px 10px #4E5166;
+          box-shadow: -5px 5px 10px #4E5166;
+  border-radius: 15px;
+  height: 200px;
+  width: 70px;
+  margin-left: 10px;
+}
+
+.left-nav-container .icons a {
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+  display: inline-block;
+}
+
+.left-nav-container .icons a img {
+  width: 50px;
+}
+
+@media screen and (max-width: 590px) {
+  .left-nav-container .icons a img {
+    height: 34px;
+    width: 34px;
+  }
+}
+
+.left-nav-container .icons a:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+.left-nav-container .icons .active-nav {
+  border-left: solid 3px #FD2D01;
+  margin-left: 2px;
+}
+
+@media screen and (max-width: 590px) {
+  .left-nav-container .icons {
+    margin: 2px 0 0 -9px;
+  }
 }
 /*# sourceMappingURL=index.css.map */

@@ -4,8 +4,7 @@ import { NavLink } from 'react-router-dom'
 const LeftNavBar = () => {
     return (
         <div className='left-nav-container'>
-            <div className='icons'>
-                <div className='icons-bis'>
+                <div className='icons'>
                     <NavLink exact to='/' activeClassName='active-nav'>
                         <img src='/img/home.png' alt='home' />
                     </NavLink>
@@ -14,7 +13,6 @@ const LeftNavBar = () => {
                         <img src='/img/user.png' alt='user' />
                     </NavLink> 
                 </div>
-            </div>
         </div>
     );
 };

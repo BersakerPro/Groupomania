@@ -1,47 +1,47 @@
-const UserModel = require('../models/user.model');
-const fs = require('fs');
-const { promisify } = require('util');
-const { uploadErrors } = require('../utils/errors.utils');
-const pipeline = promisify(require('stream').pipeline)
-
+const UserModel = require("../models/user.model");
+const fs = require("fs");
+const { promisify } = require("util");
+const { uploadErrors } = require("../utils/errors.utils");
+const pipeline = promisify(require("stream").pipeline);
 
 module.exports.uploadProfil = async (req, res) => {
-    try {
-        if (req.file.detectedMimeType != "image/jpg" && 
-        req.file.detectedMimeType != "image/png" && 
-        req.file.detectedMimeType != "image/jpeg") {
-            console.log(req.file);
-            throw Error("invalid file")
-        }
-        if (req.file.size > 500000) {
-            throw Error("max size")
-        }
+  try {
+    if (
+      req.file.detectedMimeType != "image/jpg" &&
+      req.file.detectedMimeType != "image/png" &&
+      req.file.detectedMimeType != "image/jpeg"
+    ) {
+      console.log(req.file);
+      throw Error("invalid file");
     }
-    catch(err) {
-        const errors = uploadErrors(err)
-        return res.status(201).json({ errors })
+    if (req.file.size > 500000) {
+      throw Error("max size");
     }
+  } catch (err) {
+    const errors = uploadErrors(err);
+    return res.status(201).json({ errors });
+  }
 
-    const filename = req.body.name + ".jpg";
+  const filename = req.body.name + ".jpg";
 
-    await pipeline(
-        req.file.stream,
-        fs.createWriteStream(
-            `${__dirname}/../img/profil/${filename}`
-        )
-    );
+  await pipeline(
+    req.file.stream,
+    fs.createWriteStream(`../frontend/public/img/${filename}`)
+  );
 
-    try {
-        await UserModel.findByIdAndUpdate(
-            req.body.name,
-            { $set : {picture: "./img/profil/" + filename}},
-            { new: true, upsert: true, setDefaultsOnInsert: true}
-        )
-        .then((data) => { return res.send(data)})
-        .catch((err) => res.status(400).send(err))
-    }
-    catch (err) {
-        console.log(err);
-        return res.status(500).send({ message : err})
-    }
+  try {
+    await UserModel.findByIdAndUpdate(
+      req.body.name,
+      { $set: { picture: "../frontend/public/img/" + filename } },
+      { new: true, upsert: true, setDefaultsOnInsert: true }
+    )
+      .then((data) => {
+        console.log(data);
+        return res.send(data);
+      })
+      .catch((err) => res.status(400).send(err));
+  } catch (err) {
+    console.log(err);
+    return res.status(500).send({ message: err });
+  }
 };

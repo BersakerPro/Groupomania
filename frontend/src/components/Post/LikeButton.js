@@ -4,9 +4,11 @@ import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import { useDispatch } from "react-redux";
 import { likePost, unlikePost } from "../../actions/post.action";
+import CardLike from "./CardLike";
 
 const LikeButton = ({ post }) => {
   const [liked, setLiked] = useState(false);
+  const [showLikes, setShowLikes] = useState(false);
   const userid = useContext(UseridContext);
   const dispatch = useDispatch();
 
@@ -44,7 +46,8 @@ const LikeButton = ({ post }) => {
       {userid && liked && (
         <img src="./img/liked.png" onClick={unlike} alt="unlike" />
       )}
-      <span>{post.likers.length}</span>
+      <span onClick={() => setShowLikes(!showLikes)}>{post.likers.length}</span>
+      {showLikes && <CardLike post={post} />}
     </div>
   );
 };

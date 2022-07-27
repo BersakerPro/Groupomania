@@ -9,6 +9,7 @@ const UpdateProfil = () => {
   const [bio, setBio] = useState("");
   const [updateForm, setUpdateForm] = useState(false);
   const userData = useSelector((state) => state.userReducer);
+  const errors = useSelector((state) => state.errorsReducer.userReducer);
   const dispatch = useDispatch();
 
   const urlImg = `./img/${userData.pseudo}.jpg`;
@@ -28,6 +29,8 @@ const UpdateProfil = () => {
           <h3>Photo de profil</h3>
           <img src={urlImg} alt="profil-pic" />
           <UploadImage />
+          <p>{errors.maxSize}</p>
+          <p>{errors.format}</p>
         </div>
         <div className="right-part">
           <div className="bio">

@@ -1,0 +1,64 @@
+.home {
+  display: flex;
+  background-color: $color-secondary;
+}
+
+.main {
+  width: 100%;
+
+  .post-container {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+
+    .card-container {
+      width: 50%;
+      display: flex;
+      margin: auto;
+      margin-top: 100px;
+      border: solid 2px $color-primary;
+      border-width: 5px 2px;
+      border-radius: 5px 40px;
+      background-color: white;
+
+      .card-left {
+        width: 10%;
+        text-align: center;
+        img {
+          width: 50%;
+          margin-top: 20px;
+        }
+      }
+
+      .card-right {
+        width: 100%;
+
+        .card-header {
+          display: flex;
+          justify-content: space-between;
+          padding: 10px;
+          border-bottom: solid 1px $color-primary;
+
+          span {
+            margin-right: 20px;
+          }
+        }
+
+        p {
+          width: 100%;
+        }
+
+        .card-footer {
+          display: flex;
+          justify-content: space-between;
+          img {
+            width: 30px;
+          }
+          .button-container {
+            display: flex;
+          }
+        }
+      }
+    }
+  }
+}

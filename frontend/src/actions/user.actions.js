@@ -4,6 +4,8 @@ export const GET_USER = "GET_USER";
 export const UPLOAD_PICTURE = "UPLOAD_PICTURE";
 export const UPDATE_BIO = "UPDATE_BIO";
 
+export const GET_USER_ERRORS = "GET_USER_ERRORS";
+
 export const getUser = (userid) => {
   return (dispatch) => {
     return axios
@@ -20,10 +22,16 @@ export const uploadPicture = (data, id) => {
     return axios
       .post("http://localhost:5000/api/user/upload", data)
       .then((res) => {
-        console.log("data", data);
-        return axios.get(`http://localhost:5000/api/user/${id}`).then((res) => {
-          dispatch({ type: UPLOAD_PICTURE, payload: res.data.picture });
-        });
+        if (res.data.errors) {
+          dispatch({ type: GET_USER_ERRORS, payload: res.data.errors });
+        } else {
+          dispatch({ type: GET_USER_ERRORS, payload: "" });
+          return axios
+            .get(`http://localhost:5000/api/user/${id}`)
+            .then((res) => {
+              dispatch({ type: UPLOAD_PICTURE, payload: res.data.picture });
+            });
+        }
       })
       .catch((err) => console.log(err));
   };

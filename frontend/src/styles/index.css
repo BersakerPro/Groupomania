@@ -108,7 +108,6 @@ nav {
 }
 
 nav .nav-container {
-  position: absolute;
   height: 150px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -174,6 +173,7 @@ nav .nav-container .icon-connect {
   height: 200px;
   width: 70px;
   margin-left: 10px;
+  background-color: white;
 }
 
 .left-nav-container .icons a {
@@ -207,5 +207,92 @@ nav .nav-container .icon-connect {
   .left-nav-container .icons {
     margin: 2px 0 0 -9px;
   }
+}
+
+.home {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #FFD7D7;
+}
+
+.main {
+  width: 100%;
+}
+
+.main .post-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: auto;
+}
+
+.main .post-container .card-container {
+  width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: auto;
+  margin-top: 100px;
+  border: solid 2px #FD2D01;
+  border-width: 5px 2px;
+  border-radius: 5px 40px;
+  background-color: white;
+}
+
+.main .post-container .card-container .card-left {
+  width: 10%;
+  text-align: center;
+}
+
+.main .post-container .card-container .card-left img {
+  width: 50%;
+  margin-top: 20px;
+}
+
+.main .post-container .card-container .card-right {
+  width: 100%;
+}
+
+.main .post-container .card-container .card-right .card-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 10px;
+  border-bottom: solid 1px #FD2D01;
+}
+
+.main .post-container .card-container .card-right .card-header span {
+  margin-right: 20px;
+}
+
+.main .post-container .card-container .card-right p {
+  width: 100%;
+}
+
+.main .post-container .card-container .card-right .card-footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.main .post-container .card-container .card-right .card-footer img {
+  width: 30px;
+}
+
+.main .post-container .card-container .card-right .card-footer .button-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 /*# sourceMappingURL=index.css.map */

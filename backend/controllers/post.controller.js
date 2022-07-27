@@ -1,163 +1,157 @@
-const PostModel = require('../models/post.models');
-const UserModel = require('../models/user.model');
-const { uploadErrors } = require('../utils/errors.utils');
-const ObjectID = require('mongoose').Types.ObjectId;
-const fs = require('fs');
-const { promisify } = require('util');
-const pipeline = promisify(require('stream').pipeline)
-
+const PostModel = require("../models/post.models");
+const UserModel = require("../models/user.model");
+const { uploadErrors } = require("../utils/errors.utils");
+const ObjectID = require("mongoose").Types.ObjectId;
+const fs = require("fs");
+const { promisify } = require("util");
+const pipeline = promisify(require("stream").pipeline);
 
 module.exports.readPost = (req, res) => {
-    PostModel.find((err, data) => {
-        if (!err) {
-            res.send(data)
-        } else {
-            console.log("Error to get data : " + err);
-        }
-    })
-}
+  PostModel.find((err, data) => {
+    if (!err) {
+      res.send(data);
+    } else {
+      console.log("Error to get data : " + err);
+    }
+  });
+};
 
 module.exports.createPost = async (req, res) => {
-    let filename;
+  let filename;
 
-    if (req.file != null) {
-        try {
-            if (req.file.detectedMimeType != "image/jpg" && 
-            req.file.detectedMimeType != "image/png" && 
-            req.file.detectedMimeType != "image/jpeg") {
-                console.log(req.file);
-                throw Error("invalid file")
-            }
-            if (req.file.size > 500000) {
-                throw Error("max size")
-            }
-        }
-        catch(err) {
-            const errors = uploadErrors(err)
-            return res.status(201).json({ errors })
-        }
-        filename = req.body.postId + Date.now() + '.jpg';
-
-        await pipeline(
-            req.file.stream,
-            fs.createWriteStream(
-                `${__dirname}/../img/posts/${filename}`
-            )
-        );
-    }
-
-
-    const newPost = new PostModel({
-        postId: req.body.postId,
-        message: req.body.message,
-        picture: req.file != null ? "./img/posts/" + filename : "",
-        video: req.body.video,
-        likers: [],
-    });
-
+  if (req.file != null) {
     try {
-        const post = await newPost.save();
-        return res.status(201).json(post)
+      if (
+        req.file.detectedMimeType != "image/jpg" &&
+        req.file.detectedMimeType != "image/png" &&
+        req.file.detectedMimeType != "image/jpeg"
+      ) {
+        console.log(req.file);
+        throw Error("invalid file");
+      }
+      if (req.file.size > 500000) {
+        throw Error("max size");
+      }
+    } catch (err) {
+      const errors = uploadErrors(err);
+      return res.status(201).json({ errors });
     }
-    catch (err) {
-        return res.status(400).send(err)
-    }
+    filename = req.body.postId + Date.now() + ".jpg";
+
+    await pipeline(
+      req.file.stream,
+      fs.createWriteStream(`../frontend/public/img/posts/${filename}`)
+    );
+  }
+
+  const newPost = new PostModel({
+    postId: req.body.postId,
+    message: req.body.message,
+    picture: req.file != null ? "../frontend/public/img/posts/" + filename : "",
+    video: req.body.video,
+    likers: [],
+  });
+
+  try {
+    const post = await newPost.save();
+    return res.status(201).json(post);
+  } catch (err) {
+    return res.status(400).send(err);
+  }
 };
 
 module.exports.updatePost = (req, res) => {
-    if (!ObjectID.isValid(req.params.id)) {
-        return res.status(400).send("Id inconnu : " + req.params.id)
-    }
+  if (!ObjectID.isValid(req.params.id)) {
+    return res.status(400).send("Id inconnu : " + req.params.id);
+  }
 
-    const updatedMessage = {
-        message: req.body.message
-    }
+  const updatedMessage = {
+    message: req.body.message,
+  };
 
-    PostModel.findByIdAndUpdate(
-        req.params.id,
-        { $set: updatedMessage },
-        { new: true },
-        (err, data) => {
-            if (!err) {
-                res.send(data)
-            } else {
-                console.log("Erreur de modification : " + err);
-            }
-        }
-    )
-}
+  PostModel.findByIdAndUpdate(
+    req.params.id,
+    { $set: updatedMessage },
+    { new: true },
+    (err, data) => {
+      if (!err) {
+        res.send(data);
+      } else {
+        console.log("Erreur de modification : " + err);
+      }
+    }
+  );
+};
 
 module.exports.deletePost = (req, res) => {
-    if (!ObjectID.isValid(req.params.id)) {
-        return res.status(400).send("Id inconnu : " + req.params.id)
+  if (!ObjectID.isValid(req.params.id)) {
+    return res.status(400).send("Id inconnu : " + req.params.id);
+  }
+
+  PostModel.findByIdAndRemove(req.params.id, (err, data) => {
+    if (!err) {
+      res.send(data);
+    } else {
+      console.log("Erreur de suppression" + err);
     }
-
-    PostModel.findByIdAndRemove(
-        req.params.id,
-        (err, data) => {
-            if (!err) {
-                res.send(data)
-            } else {
-                console.log("Erreur de suppression" + err);
-            }
-        }
-    )
-}
-
+  });
+};
 
 module.exports.likePost = async (req, res) => {
-    if (!ObjectID.isValid(req.params.id)) {
-        return res.status(400).send("Id inconnu : " + req.params.id)
-    }
+  if (!ObjectID.isValid(req.params.id)) {
+    return res.status(400).send("Id inconnu : " + req.params.id);
+  }
 
-    try {
-        await PostModel.findByIdAndUpdate(
-            req.params.id,
-            {
-                $addToSet: { likers: req.body.id }
-            },
-            { new: true })
-            .catch((err) => res.status(400).send(err))
-        
-        await UserModel.findByIdAndUpdate(
-            req.body.id,
-            {
-                $addToSet: { likes: req.params.id }
-            },
-            { new: true })
-            .then((data) => { return res.send(data)})
-            .catch((err) => res.status(400).send(err))
-        
-    }
-    catch (err) {
-        return res.status(400).send(err)
-    }
+  try {
+    await PostModel.findByIdAndUpdate(
+      req.params.id,
+      {
+        $addToSet: { likers: req.body.id },
+      },
+      { new: true }
+    ).catch((err) => res.status(400).send(err));
+
+    await UserModel.findByIdAndUpdate(
+      req.body.id,
+      {
+        $addToSet: { likes: req.params.id },
+      },
+      { new: true }
+    )
+      .then((data) => {
+        return res.send(data);
+      })
+      .catch((err) => res.status(400).send(err));
+  } catch (err) {
+    return res.status(400).send(err);
+  }
 };
 
 module.exports.unlikePost = async (req, res) => {
-    if (!ObjectID.isValid(req.params.id)) {
-        return res.status(400).send("Id inconnu : " + req.params.id)
-    }
-    try {
-        await PostModel.findByIdAndUpdate(
-            req.params.id,
-            {
-                $pull: { likers: req.body.id }
-            },
-            { new: true })
-            .catch((err) => res.status(400).send(err))
-        
-        await UserModel.findByIdAndUpdate(
-            req.body.id,
-            {
-                $pull: { likes: req.params.id }
-            },
-            { new: true })
-            .then((data) => { return res.send(data)})
-            .catch((err) => res.status(400).send(err))
-        
-    }
-    catch (err) {
-        return res.status(400).send(err)
-    }
-}
+  if (!ObjectID.isValid(req.params.id)) {
+    return res.status(400).send("Id inconnu : " + req.params.id);
+  }
+  try {
+    await PostModel.findByIdAndUpdate(
+      req.params.id,
+      {
+        $pull: { likers: req.body.id },
+      },
+      { new: true }
+    ).catch((err) => res.status(400).send(err));
+
+    await UserModel.findByIdAndUpdate(
+      req.body.id,
+      {
+        $pull: { likes: req.params.id },
+      },
+      { new: true }
+    )
+      .then((data) => {
+        return res.send(data);
+      })
+      .catch((err) => res.status(400).send(err));
+  } catch (err) {
+    return res.status(400).send(err);
+  }
+};

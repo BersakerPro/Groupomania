@@ -1,0 +1,71 @@
+.profil-page {
+  height: 84vh;
+  box-shadow: 0 0 15px $color-tertiary;
+  .log-container {
+    text-align: center;
+    width: 100%;
+  }
+
+  .form-container {
+    display: flex;
+    justify-content: center;
+
+    ul {
+      margin: 2%;
+      width: 20%;
+      height: 400px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      li {
+        margin: 20px auto;
+        padding: 15px;
+        width: 70%;
+        height: 50px;
+        background-color: $color-secondary;
+        cursor: pointer;
+        border-radius: 20px;
+      }
+    }
+    .active-btn {
+      background-color: $color-primary;
+    }
+    #signup-form {
+      width: 20%;
+      margin: 2%;
+      padding: 1%;
+      border-radius: 20px;
+      background-color: $color-secondary;
+      #pseudo,
+      #email,
+      #password,
+      #confirm-password {
+        border-radius: 20px;
+        width: 50%;
+        height: 30px;
+        margin: 9px;
+      }
+      #submit {
+        width: 60%;
+        height: 30px;
+        border-radius: 20px;
+        font-size: 1.1em;
+        cursor: pointer;
+        &:hover {
+          background-color: $color-primary;
+          color: white;
+        }
+      }
+      .email-error,
+      .password-error,
+      .pseudoError,
+      .emailError,
+      .passwordError,
+      .confPasswordError,
+      .conditionError {
+        color: $color-primary;
+        font-weight: bold;
+      }
+    }
+  }
+}

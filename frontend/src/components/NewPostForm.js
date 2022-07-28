@@ -74,7 +74,7 @@ const NewPostForm = () => {
         <>
           <div className="data">
             <NavLink exact to="/profil">
-              <img src="userData.picture" alt="user-img" />
+              <img src={userData.picture} alt="user-img" />
             </NavLink>
           </div>
           <div className="post-form">
@@ -98,7 +98,7 @@ const NewPostForm = () => {
                     <span>{timeStampParser(Date.now())}</span>
                   </div>
                   <p>{message}</p>
-                  <img src="{post.picture}" alt="post-pic" />
+                  <img src={postPicture} alt="post-pic" />
                   {video && (
                     <iframe
                       src={video}

@@ -26,13 +26,13 @@ module.exports.uploadProfil = async (req, res) => {
 
   await pipeline(
     req.file.stream,
-    fs.createWriteStream(`../frontend/public/img/${filename}`)
+    fs.createWriteStream(`../../frontend/public/img/${filename}`)
   );
 
   try {
     await UserModel.findByIdAndUpdate(
       req.body.name,
-      { $set: { picture: "../frontend/public/img/" + filename } },
+      { $set: { picture: "./img/" + filename } },
       { new: true, upsert: true, setDefaultsOnInsert: true }
     )
       .then((data) => {

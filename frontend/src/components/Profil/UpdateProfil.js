@@ -9,11 +9,20 @@ const UpdateProfil = () => {
   const [bio, setBio] = useState("");
   const [updateForm, setUpdateForm] = useState(false);
   const userData = useSelector((state) => state.userReducer);
+  const posts = useSelector((state) => state.postReducer);
   const errors = useSelector((state) => state.errorsReducer.userReducer);
   const dispatch = useDispatch();
 
-  const urlImg = `./img/${userData.pseudo}.jpg`;
-  console.log(urlImg);
+  const NumberPost = () => {
+    let array = [];
+    for (let i = 0; i < posts.length; i++) {
+      if (i.postId === userData._id) {
+        array.push(i);
+      }
+    }
+    return array.length;
+  };
+  console.log(NumberPost());
 
   const handleUpdate = () => {
     dispatch(updateBio(userData._id, bio));
@@ -21,43 +30,49 @@ const UpdateProfil = () => {
   };
 
   return (
-    <div className="profil-container">
+    <>
       <LeftNavBar />
-      <h1>Profil de {userData.pseudo}</h1>
-      <div className="update-container">
-        <div className="left-part">
-          <h3>Photo de profil</h3>
-          <img src={urlImg} alt="profil-pic" />
-          <UploadImage />
-          <p>{errors.maxSize}</p>
-          <p>{errors.format}</p>
-        </div>
-        <div className="right-part">
-          <div className="bio">
-            <h3>Bio</h3>
-            {updateForm === false && (
-              <>
-                <p onClick={() => setUpdateForm(!updateForm)}>{userData.bio}</p>
-                <button onClick={() => setUpdateForm(!updateForm)}>
-                  Modifier bio
-                </button>
-              </>
-            )}
-            {updateForm && (
-              <>
-                <textarea
-                  type="text"
-                  defaultValue={userData.bio}
-                  onChange={(e) => setBio(e.target.value)}
-                ></textarea>
-                <button onClick={handleUpdate}>Valider modifications</button>
-              </>
-            )}
+      <div className="profil-container">
+        <h1>Profil de {userData.pseudo}</h1>
+        <div className="update-container">
+          <div className="left-part">
+            <h3>Photo de profil</h3>
+            <img src="./img/profile.png" alt="profil-pic" />
+            <UploadImage />
           </div>
-          <h4>Membre depuis le : {dateParser(userData.createdAt)}</h4>
+          <div className="right-part">
+            <div className="bio">
+              <h3>Bio</h3>
+              {updateForm === false && (
+                <>
+                  <p onClick={() => setUpdateForm(!updateForm)}>
+                    {userData.bio}
+                  </p>
+                  <button onClick={() => setUpdateForm(!updateForm)}>
+                    Modifier bio
+                  </button>
+                </>
+              )}
+              {updateForm && (
+                <>
+                  <textarea
+                    type="text"
+                    defaultValue={userData.bio}
+                    onChange={(e) => setBio(e.target.value)}
+                  ></textarea>
+                  <button onClick={handleUpdate}>Valider modifications</button>
+                </>
+              )}
+            </div>
+            <h4>Membre depuis le : {dateParser(userData.createdAt)}</h4>
+            <p className="NumberLikes">
+              Nombre de likes : {userData.likes ? userData.likes.length : 0}
+            </p>
+            <p>Nombre de message posté : {NumberPost()}</p>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

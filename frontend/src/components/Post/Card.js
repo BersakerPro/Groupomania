@@ -20,8 +20,9 @@ const Card = ({ post }) => {
     setIsUpdated(false);
   };
 
+  console.log(userData);
   //const userImgUrl = `./img/${userData.pseudo}.jpg`;
-  //const postImgUrl = `./img/posts/${post._id}.jpg`;
+
   useEffect(() => {
     !isEmpty(usersData[0]) && setIsLoading(false);
   }, [usersData]);
@@ -35,15 +36,20 @@ const Card = ({ post }) => {
           <>
             <div className="card-left">
               <img
-                src="./img/profile.png" /*src={ 
-                                !isEmpty(usersData[0] &&
-                                usersData
-                                .map((user) => {
-                                    if (user._id === post.postId) {
-                                        return user.picture
-                                    } else {return null}
-                                }).join('')    
-                            )}*/
+                src={
+                  !isEmpty(
+                    usersData[0] &&
+                      usersData
+                        .map((user) => {
+                          if (user._id === post.postId) {
+                            return user.picture;
+                          } else {
+                            return null;
+                          }
+                        })
+                        .join("")
+                  )
+                }
                 alt="user-pic"
               />
             </div>
@@ -98,7 +104,7 @@ const Card = ({ post }) => {
                 {userData._id === post.postId && (
                   <div className="button-container">
                     <div onClick={() => setIsUpdated(!isUpdated)}>
-                      <img src="./img/edit.png" alt="edit-post" />
+                      <i className="fas fa-edit"></i>
                     </div>
                     <DeleteCard id={post._id} />
                   </div>

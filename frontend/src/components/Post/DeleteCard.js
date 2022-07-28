@@ -16,7 +16,7 @@ const DeleteCard = (props) => {
         }
       }}
     >
-      <img src="./img/trash.png" alt="trash" />
+      <i className="fas fa-trash"></i>
     </div>
   );
 };

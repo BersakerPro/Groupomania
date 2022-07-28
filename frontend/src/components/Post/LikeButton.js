@@ -33,7 +33,7 @@ const LikeButton = ({ post }) => {
     <div className="like-container">
       {userid == null && (
         <Popup
-          trigger={<img src="./img/like.png" alt="like" />}
+          trigger={<i className="far fa-thumbs-up"></i>}
           position={["bottom center", "bottom right", "bottom left"]}
           closeOnDocumentClick
         >
@@ -41,11 +41,9 @@ const LikeButton = ({ post }) => {
         </Popup>
       )}
       {userid && liked === false && (
-        <img src="./img/like.png" onClick={like} alt="like" />
+        <i className="far fa-thumbs-up" onClick={like}></i>
       )}
-      {userid && liked && (
-        <img src="./img/liked.png" onClick={unlike} alt="unlike" />
-      )}
+      {userid && liked && <i className="fas fa-thumbs-up" onClick={unlike}></i>}
       <span onClick={() => setShowLikes(!showLikes)}>{post.likers.length}</span>
       {showLikes && <CardLike post={post} />}
     </div>

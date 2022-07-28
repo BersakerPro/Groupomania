@@ -1,21 +1,44 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
 
 //Police
-$font : 'Lato', sans-serif;
+$font: "Lato", sans-serif;
 
 //Couleur
-$color-primary: #FD2D01;
-$color-secondary: #FFD7D7;
-$color-tertiary: #4E5166;
+$color-primary: #fd2d01;
+$color-secondary: #ffd7d7;
+$color-tertiary: #4e5166;
+
+h1 {
+  font-size: 2em;
+}
+
+h3 {
+  font-size: 1.3em;
+}
 
 //Général
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    list-style-type: none;
-    outline: none;
-    border: none;
-    text-decoration: none;
-    font-family: $font;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style-type: none;
+  outline: none;
+  border: none;
+  text-decoration: none;
+  font-family: $font;
+}
+
+@mixin profil-card {
+  width: 30%;
+  min-height: 500px;
+  border-radius: 20px;
+  border: solid 2px $color-primary;
+  background-color: white;
+}
+
+@mixin btn {
+  border-radius: 0 10px 10px;
+  color: white;
+  background-color: $color-tertiary;
+  cursor: pointer;
 }

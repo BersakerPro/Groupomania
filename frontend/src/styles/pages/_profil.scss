@@ -1,75 +1,70 @@
 .profil-page {
-    
-    margin: 50px auto;
-    
-    .log-container{
+  display: flex;
+  background-color: $color-secondary;
+  box-shadow: 0 0 15px $color-tertiary;
+
+  .profil-container {
+    width: 100%;
+    margin-top: 20px;
+    margin-left: 50px;
+
+    h1 {
+      width: 20%;
+      border-bottom: solid 2px $color-primary;
+    }
+
+    .update-container {
+      margin: 50px;
+      display: flex;
+
+      .left-part {
+        @include profil-card;
         text-align: center;
+        margin-right: 50px;
+
+        h3 {
+          margin: 20px;
+        }
+
+        img {
+          width: 70%;
+          border: solid 2px $color-primary;
+          border-radius: 50%;
+        }
+
+        .upload-pic {
+          margin-top: 30px;
+
+          #file {
+            margin-top: 20px;
+          }
+
+          #submit-btn {
+            @include btn;
+            margin-top: 20px;
+            padding: 8px 15px;
+          }
+        }
+      }
+      .right-part {
+        @include profil-card;
+
+        h3 {
+          text-align: center;
+          margin-top: 20px;
+        }
+        p {
+          width: 80%;
+          min-height: 100px;
+          margin: 20px auto;
+          border: solid 1px $color-primary;
+          border-radius: 20px;
+        }
+        h4 {
+          text-align: center;
+          margin-top: 50px;
+        }
+      }
     }
-
-    .form-container{
-        display: flex;
-        justify-content: center;
-
-        ul{
-            margin: 2%;
-            width: 20%;
-            height: 400px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            li{
-                margin: 20px auto;
-                padding: 15px ;
-                width: 70%;
-                height: 50px;   
-                background-color: $color-secondary;
-                cursor: pointer;  
-                border-radius: 20px;           
-            }
-        }
-        .active-btn{
-            background-color: $color-primary;
-        }
-        #signup-form{
-            width: 20%;
-            margin: 2%;
-            padding: 1%;
-            border-radius: 20px;
-            background-color: $color-secondary;
-            #pseudo,
-            #email,
-            #password,
-            #confirm-password 
-            {
-                border-radius: 20px;
-                width: 50%;
-                height: 30px;
-                margin: 9px;
-            }
-            #submit{
-                width: 60%;
-                height: 30px;
-                border-radius: 20px;
-                font-size: 1.1em;
-                cursor: pointer;
-                &:hover{
-                    background-color: $color-primary;
-                    color: white;
-                }
-            }
-            .email-error,
-            .password-error,
-            .pseudoError,
-            .emailError,
-            .passwordError,
-            .confPasswordError,
-            .conditionError{
-                color: $color-primary;
-                font-weight: bold;
-            }
-        }
-
-    }
-    
+  }
 }
-

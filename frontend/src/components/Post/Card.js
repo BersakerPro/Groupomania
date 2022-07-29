@@ -13,15 +13,15 @@ const Card = ({ post }) => {
   const [textUpdate, setTextUpdated] = useState(null);
   const dispatch = useDispatch();
 
+  const AdminId = process.env.REACT_APP_ADMIN_ID;
+  console.log(process.env.REACT_APP_ADMIN_ID);
+
   const updatedItem = () => {
     if (textUpdate) {
       dispatch(updatePost(post._id, textUpdate));
     }
     setIsUpdated(false);
   };
-
-  console.log(userData);
-  //const userImgUrl = `./img/${userData.pseudo}.jpg`;
 
   useEffect(() => {
     !isEmpty(usersData[0]) && setIsLoading(false);
@@ -35,23 +35,7 @@ const Card = ({ post }) => {
         ) : (
           <>
             <div className="card-left">
-              <img
-                src={
-                  !isEmpty(
-                    usersData[0] &&
-                      usersData
-                        .map((user) => {
-                          if (user._id === post.postId) {
-                            return user.picture;
-                          } else {
-                            return null;
-                          }
-                        })
-                        .join("")
-                  )
-                }
-                alt="user-pic"
-              />
+              <img src={userData.picture} alt="user-pic" />
             </div>
             <div className="card-right">
               <div className="card-header">
@@ -101,7 +85,7 @@ const Card = ({ post }) => {
                 ></iframe>
               )}
               <div className="card-footer">
-                {userData._id === post.postId && (
+                {(userData._id === post.postId || userData._id === {}) && (
                   <div className="button-container">
                     <div onClick={() => setIsUpdated(!isUpdated)}>
                       <i className="fas fa-edit"></i>

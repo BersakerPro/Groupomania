@@ -13,8 +13,11 @@ const UpdateProfil = () => {
   const errors = useSelector((state) => state.errorsReducer.userReducer);
   const dispatch = useDispatch();
 
+  console.log(posts);
+
   const NumberPost = () => {
     let array = [];
+    console.log(posts);
     for (let i = 0; i < posts.length; i++) {
       if (i.postId === userData._id) {
         array.push(i);
@@ -37,7 +40,7 @@ const UpdateProfil = () => {
         <div className="update-container">
           <div className="left-part">
             <h3>Photo de profil</h3>
-            <img src="./img/profile.png" alt="profil-pic" />
+            <img src={userData.picture} alt="profil-pic" />
             <UploadImage />
           </div>
           <div className="right-part">

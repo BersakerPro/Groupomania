@@ -11,13 +11,12 @@ export const DELETE_POST = "DELETE_POST";
 //Errors
 export const GET_POST_ERRORS = "GET_POST_ERROR";
 
-export const getPosts = (num) => {
+export const getPosts = () => {
   return (dispatch) => {
     return axios
       .get("http://localhost:5000/api/post/")
       .then((res) => {
-        const array = res.data.slice(0, num);
-        dispatch({ type: GET_POSTS, payload: array });
+        dispatch({ type: GET_POSTS, payload: res.data });
       })
       .catch((err) => console.log(err));
   };

@@ -24,14 +24,12 @@ const userSchema = new mongoose.Schema(
       maxLength: 100,
       minLength: 8,
     },
-    admin: {
-      type: Boolean,
-      required: true,
-      default: false,
+    role: {
+      type: String,
     },
     picture: {
       type: String,
-      default: "../../frontend/public/img/profile.png",
+      default: "img/profile.png",
     },
     bio: {
       type: String,

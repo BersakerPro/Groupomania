@@ -13,9 +13,6 @@ const Card = ({ post }) => {
   const [textUpdate, setTextUpdated] = useState(null);
   const dispatch = useDispatch();
 
-  const AdminId = process.env.REACT_APP_ADMIN_ID;
-  console.log(process.env.REACT_APP_ADMIN_ID);
-
   const updatedItem = () => {
     if (textUpdate) {
       dispatch(updatePost(post._id, textUpdate));
@@ -85,7 +82,8 @@ const Card = ({ post }) => {
                 ></iframe>
               )}
               <div className="card-footer">
-                {(userData._id === post.postId || userData._id === {}) && (
+                {(userData._id === post.postId ||
+                  userData._id === process.env.REACT_APP_ADMIN_ID) && (
                   <div className="button-container">
                     <div onClick={() => setIsUpdated(!isUpdated)}>
                       <i className="fas fa-edit"></i>

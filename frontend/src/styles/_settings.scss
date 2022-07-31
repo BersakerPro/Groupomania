@@ -32,8 +32,8 @@ h3 {
   width: 30%;
   min-height: 500px;
   border-radius: 20px;
-  border: solid 2px $color-primary;
   background-color: white;
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 }
 
 @mixin btn {

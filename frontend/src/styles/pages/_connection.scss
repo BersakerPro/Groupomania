@@ -9,6 +9,7 @@
   .form-container {
     display: flex;
     justify-content: center;
+    margin-top: 100px;
 
     ul {
       margin: 2%;
@@ -30,24 +31,26 @@
     .active-btn {
       background-color: $color-primary;
     }
-    #signup-form {
+    #signup-form,
+    #signin-form {
       width: 20%;
       margin: 2%;
-      padding: 1%;
+      padding: 2%;
       border-radius: 20px;
-      background-color: $color-secondary;
+      background-color: white;
       #pseudo,
       #email,
       #password,
       #confirm-password {
         border-radius: 20px;
-        width: 50%;
+        width: 70%;
         height: 30px;
         margin: 9px;
+        background-color: $color-secondary;
       }
       #submit {
-        width: 60%;
-        height: 30px;
+        width: 70%;
+        height: 35px;
         border-radius: 20px;
         font-size: 1.1em;
         cursor: pointer;

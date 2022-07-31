@@ -7,6 +7,60 @@
 .main {
   width: 100%;
 
+  .connection-from {
+    .form-container {
+      background-color: white;
+      ul {
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        li {
+          width: 30%;
+          height: 35px;
+          margin-left: 2px;
+          font-size: 1.4em;
+          cursor: pointer;
+          border: solid 1px $color-primary;
+          border-top: none;
+          border-radius: 0 0 10px 10px;
+        }
+        .active-btn {
+          background-color: $color-primary;
+          color: white;
+        }
+      }
+      #signin-form {
+        height: 25px;
+        margin: 20px;
+        display: flex;
+        label {
+          margin-right: 10px;
+          font-weight: bold;
+          font-size: 1.1em;
+        }
+        input {
+          margin-right: 20px;
+          border-radius: 10px;
+          background-color: $color-secondary;
+        }
+        #submit {
+          @include btn;
+          background-color: $color-primary;
+          font-size: 1.2em;
+          padding-left: 10px;
+          padding-right: 10px;
+          margin-left: 15px;
+        }
+      }
+      #signup-form {
+        margin: 20px;
+        input {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
   .form-container {
     width: 50%;
     margin: auto;
@@ -71,7 +125,6 @@
       display: flex;
       margin: auto;
       margin-top: 20px;
-      border: solid 2px $color-primary;
       border-radius: 0 20px 20px;
       background-color: white;
 
@@ -133,6 +186,7 @@
             .fas {
               font-size: 1.5em;
               margin-left: 10px;
+              cursor: pointer;
             }
           }
         }
@@ -141,6 +195,7 @@
           .far {
             font-size: 1.5em;
             margin-right: 15px;
+            cursor: pointer;
           }
         }
       }

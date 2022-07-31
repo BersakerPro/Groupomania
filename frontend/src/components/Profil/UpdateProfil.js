@@ -17,11 +17,11 @@ const UpdateProfil = () => {
 
   const NumberPost = () => {
     let array = [];
-    console.log(posts);
-    for (let i = 0; i < posts.length; i++) {
-      if (i.postId === userData._id) {
-        array.push(i);
+    for (let post of posts) {
+      if (post.postId === userData._id) {
+        array.push(post);
       }
+      console.log(post);
     }
     return array.length;
   };
@@ -48,7 +48,10 @@ const UpdateProfil = () => {
               <h3>Bio</h3>
               {updateForm === false && (
                 <>
-                  <p onClick={() => setUpdateForm(!updateForm)}>
+                  <p
+                    className="content-bio"
+                    onClick={() => setUpdateForm(!updateForm)}
+                  >
                     {userData.bio}
                   </p>
                   <button onClick={() => setUpdateForm(!updateForm)}>
@@ -68,10 +71,8 @@ const UpdateProfil = () => {
               )}
             </div>
             <h4>Membre depuis le : {dateParser(userData.createdAt)}</h4>
-            <p className="NumberLikes">
-              Nombre de likes : {userData.likes ? userData.likes.length : 0}
-            </p>
-            <p>Nombre de message posté : {NumberPost()}</p>
+            <span>Messages : {NumberPost()}</span>
+            <span>Likes : {userData.likes ? userData.likes.length : 0}</span>
           </div>
         </div>
       </div>

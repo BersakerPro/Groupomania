@@ -1,3 +1,4 @@
+//GESTION DE L'AFFICHAGE DU TIMESTAMP
 export const dateParser = (num) => {
   let options = {
     hour: "2-digit",
@@ -31,6 +32,7 @@ export const timeStampParser = (num) => {
   return date.toString();
 };
 
+//VERIF DE VALEUR VIDE
 export const isEmpty = (value) => {
   return (
     value === undefined ||

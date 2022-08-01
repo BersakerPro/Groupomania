@@ -4,6 +4,7 @@ import { getPosts } from "../actions/post.action";
 import { isEmpty } from "./Utils";
 import Card from "./Post/Card";
 
+//COMPONENT DU FLUX D'ACTUALITE DES POSTS
 const Thread = () => {
   const [loadPost, setLoadPost] = useState(true);
   const dispatch = useDispatch();

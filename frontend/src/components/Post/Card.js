@@ -5,6 +5,7 @@ import { dateParser, isEmpty } from "../Utils";
 import DeleteCard from "./DeleteCard";
 import LikeButton from "./LikeButton";
 
+//CARTE D'UN POST
 const Card = ({ post }) => {
   const [isLoading, setIsLoading] = useState(true);
   const usersData = useSelector((state) => state.usersReducer);

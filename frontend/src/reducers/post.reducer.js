@@ -8,6 +8,7 @@ import {
 
 const initialState = {};
 
+//REDUCER DES POSTS
 export default function postReducer(state = initialState, action) {
   switch (action.type) {
     case GET_POSTS:

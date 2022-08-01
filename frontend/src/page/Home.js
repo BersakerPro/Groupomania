@@ -5,6 +5,7 @@ import Thread from "../components/Thread";
 import Log from "../components/Log";
 import NewPostForm from "../components/NewPostForm";
 
+//COMPONENT PAGE HOME
 const Home = () => {
   const userid = useContext(UseridContext);
 

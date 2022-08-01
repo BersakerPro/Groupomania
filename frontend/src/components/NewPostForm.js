@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import { addPost, getPosts } from "../actions/post.action";
 import { isEmpty, timeStampParser } from "./Utils";
 
+//COMPONENT DU FORMULAIRE DE CREATION DE POST
 const NewPostForm = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [message, setMessage] = useState("");

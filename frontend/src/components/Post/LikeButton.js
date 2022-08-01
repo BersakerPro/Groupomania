@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { likePost, unlikePost } from "../../actions/post.action";
 import CardLike from "./CardLike";
 
+//LIKE D'UN POST
 const LikeButton = ({ post }) => {
   const [liked, setLiked] = useState(false);
   const [showLikes, setShowLikes] = useState(false);

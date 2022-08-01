@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { uploadPicture } from "../../actions/user.actions";
 
+//UPLOAD DE L'IMAGE DE PROFIL
 const UploadImage = () => {
   const [file, setFile] = useState();
   const dispatch = useDispatch();

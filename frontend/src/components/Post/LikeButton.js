@@ -4,7 +4,6 @@ import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import { useDispatch } from "react-redux";
 import { likePost, unlikePost } from "../../actions/post.action";
-import CardLike from "./CardLike";
 
 //LIKE D'UN POST
 const LikeButton = ({ post }) => {
@@ -46,7 +45,6 @@ const LikeButton = ({ post }) => {
       )}
       {userid && liked && <i className="fas fa-thumbs-up" onClick={unlike}></i>}
       <span onClick={() => setShowLikes(!showLikes)}>{post.likers.length}</span>
-      {showLikes && <CardLike />}
     </div>
   );
 };

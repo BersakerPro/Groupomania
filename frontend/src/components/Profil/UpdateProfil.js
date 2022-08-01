@@ -9,19 +9,8 @@ const UpdateProfil = () => {
   const [bio, setBio] = useState("");
   const [updateForm, setUpdateForm] = useState(false);
   const userData = useSelector((state) => state.userReducer);
-  const posts = useSelector((state) => state.postReducer);
-  const errors = useSelector((state) => state.errorsReducer.userReducer);
+  //const errors = useSelector((state) => state.errorsReducer.userReducer);
   const dispatch = useDispatch();
-
-  /*const NumberPost = () => {
-    let array = [];
-    for (let post of posts) {
-      if (post.postId === userData._id) {
-        array.push(post);
-      }
-    }
-    return array.length;
-  };*/
 
   const handleUpdate = () => {
     dispatch(updateBio(userData._id, bio));
@@ -70,7 +59,6 @@ const UpdateProfil = () => {
               )}
             </div>
             <h4>Membre depuis le : {dateParser(userData.createdAt)}</h4>
-            <span>Messages : {/*NumberPost()*/}</span>
             <span>Likes : {userData.likes ? userData.likes.length : 0}</span>
           </div>
         </div>

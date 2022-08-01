@@ -28,23 +28,24 @@ module.exports.uploadProfil = async (req, res) => {
 
   await pipeline(
     req.file.stream,
-    fs.createWriteStream(
-      `${__dirname}/../../../frontend/public/img/${filename}`
-    )
+    fs.createWriteStream(`${__dirname}/../../frontend/public/img/${filename}`)
   );
+  console.log(__dirname);
   console.log(req.file.stream);
 
   try {
     await UserModel.findByIdAndUpdate(
       req.body.name,
-      { $set: { picture: "../../frontend/public/img/" + filename } },
+      {
+        $set: { picture: `${__dirname}/../../frontend/public/img/` + filename },
+      },
       { new: true, upsert: true, setDefaultsOnInsert: true }
     )
       .then((data) => {
-        console.log(data);
+        console.log("success");
         return res.send(data);
       })
-      .catch((err) => res.status(400).send(err));
+      .catch((err) => res.status(401).send(err));
   } catch (err) {
     console.log(err);
     return res.status(500).send({ message: err });

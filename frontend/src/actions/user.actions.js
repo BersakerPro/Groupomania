@@ -18,19 +18,23 @@ export const getUser = (userid) => {
 };
 
 export const uploadPicture = (data, id) => {
+  console.log("FONCTION///////");
   return (dispatch) => {
     return axios
       .post(`${process.env.REACT_APP_API_URL}api/user/upload`, data)
       .then((res) => {
         if (res.data.errors) {
+          console.log("dans ce putain de if");
           dispatch({ type: GET_USER_ERRORS, payload: res.data.errors });
         } else {
           dispatch({ type: GET_USER_ERRORS, payload: "" });
           return axios
             .get(`${process.env.REACT_APP_API_URL}api/user/${id}`)
             .then((res) => {
+              console.log("//////test////////" + res.data.picture);
               dispatch({ type: UPLOAD_PICTURE, payload: res.data.picture });
-            });
+            })
+            .catch((err) => console.log(err));
         }
       })
       .catch((err) => console.log(err));

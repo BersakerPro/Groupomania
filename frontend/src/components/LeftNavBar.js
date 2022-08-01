@@ -7,11 +7,11 @@ const LeftNavBar = () => {
     <div className="left-nav-container">
       <div className="icons">
         <NavLink exact to="/" activeClassName="active-nav">
-          <img src="/img/home.png" alt="home" />
+          <img src="/img/utils/home.png" alt="home" />
         </NavLink>
         <br />
         <NavLink exact to="/profil" activeClassName="active-nav">
-          <img src="/img/user.png" alt="user" />
+          <img src="/img/utils/user.png" alt="user" />
         </NavLink>
       </div>
     </div>

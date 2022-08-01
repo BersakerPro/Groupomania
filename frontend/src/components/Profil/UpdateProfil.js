@@ -28,6 +28,9 @@ const UpdateProfil = () => {
     setUpdateForm(false);
   };
 
+  let img = document.getElementById("img-profile");
+  console.log(img);
+
   return (
     <>
       <LeftNavBar />
@@ -36,7 +39,7 @@ const UpdateProfil = () => {
         <div className="update-container">
           <div className="left-part">
             <h3>Photo de profil</h3>
-            <img src={userData.picture} alt="profil-pic" />
+            <img id="img-profile" src={userData.picture} alt="profil-pic" />
             <UploadImage />
           </div>
           <div className="right-part">

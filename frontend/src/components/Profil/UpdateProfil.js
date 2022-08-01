@@ -13,19 +13,15 @@ const UpdateProfil = () => {
   const errors = useSelector((state) => state.errorsReducer.userReducer);
   const dispatch = useDispatch();
 
-  console.log(posts);
-
-  const NumberPost = () => {
+  /*const NumberPost = () => {
     let array = [];
     for (let post of posts) {
       if (post.postId === userData._id) {
         array.push(post);
       }
-      console.log(post);
     }
     return array.length;
-  };
-  console.log(NumberPost());
+  };*/
 
   const handleUpdate = () => {
     dispatch(updateBio(userData._id, bio));
@@ -71,7 +67,7 @@ const UpdateProfil = () => {
               )}
             </div>
             <h4>Membre depuis le : {dateParser(userData.createdAt)}</h4>
-            <span>Messages : {NumberPost()}</span>
+            <span>Messages : {/*NumberPost()*/}</span>
             <span>Likes : {userData.likes ? userData.likes.length : 0}</span>
           </div>
         </div>

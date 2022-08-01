@@ -3,6 +3,7 @@ const { isEmail } = require("validator");
 const uniqueValidator = require("mongoose-unique-validator");
 const bcrypt = require("bcrypt");
 
+//MODELE DU USER
 const userSchema = new mongoose.Schema(
   {
     pseudo: {

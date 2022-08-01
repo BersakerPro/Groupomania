@@ -1,3 +1,4 @@
+//REQUIRE
 const PostModel = require("../models/post.models");
 const UserModel = require("../models/user.model");
 const { uploadErrors } = require("../utils/errors.utils");
@@ -6,6 +7,7 @@ const fs = require("fs");
 const { promisify } = require("util");
 const pipeline = promisify(require("stream").pipeline);
 
+//GET
 module.exports.readPost = (req, res) => {
   PostModel.find((err, data) => {
     if (!err) {
@@ -16,6 +18,7 @@ module.exports.readPost = (req, res) => {
   });
 };
 
+//CREATE
 module.exports.createPost = async (req, res) => {
   let filename;
 
@@ -60,6 +63,7 @@ module.exports.createPost = async (req, res) => {
   }
 };
 
+//PUT
 module.exports.updatePost = (req, res) => {
   if (!ObjectID.isValid(req.params.id)) {
     return res.status(400).send("Id inconnu : " + req.params.id);
@@ -83,6 +87,7 @@ module.exports.updatePost = (req, res) => {
   );
 };
 
+//DELETE
 module.exports.deletePost = (req, res) => {
   if (!ObjectID.isValid(req.params.id)) {
     return res.status(400).send("Id inconnu : " + req.params.id);
@@ -97,6 +102,7 @@ module.exports.deletePost = (req, res) => {
   });
 };
 
+//LIKE DU POST
 module.exports.likePost = async (req, res) => {
   if (!ObjectID.isValid(req.params.id)) {
     return res.status(400).send("Id inconnu : " + req.params.id);
@@ -127,6 +133,7 @@ module.exports.likePost = async (req, res) => {
   }
 };
 
+//UNLIKE DU POST
 module.exports.unlikePost = async (req, res) => {
   if (!ObjectID.isValid(req.params.id)) {
     return res.status(400).send("Id inconnu : " + req.params.id);

@@ -1,6 +1,8 @@
+//REQUIRE
 const jwt = require("jsonwebtoken");
 const UserModel = require("../models/user.model");
 
+//CONTROLE ET STOCKAGE DE L'ID
 module.exports.checkUser = (req, res, next) => {
   const token = req.cookies.jwt;
   if (token) {
@@ -22,6 +24,7 @@ module.exports.checkUser = (req, res, next) => {
   }
 };
 
+//RECUP DU TOKEN
 module.exports.requireAuth = (req, res, next) => {
   const token = req.cookies.jwt;
   if (token) {

@@ -5,18 +5,18 @@ const uploadController = require("../controllers/upload.controller");
 const multer = require("multer");
 const upload = multer();
 
-//Authentification
+//AUTHENTIFICATION
 router.post("/register", authControllers.signup);
 router.post("/login", authControllers.signin);
 router.get("/logout", authControllers.logout);
 
-//User
+//CRUD USER
 router.get("/", userController.getAllUsers);
 router.get("/:id", userController.userInfo);
 router.put("/:id", userController.updateUser);
 router.delete("/:id", userController.deleteUser);
 
-//Upload
+//UPLOAD USER
 router.post("/upload", upload.single("file"), uploadController.uploadProfil);
 
 module.exports = router;

@@ -45,7 +45,7 @@ const LikeButton = ({ post }) => {
       )}
       {userid && liked && <i className="fas fa-thumbs-up" onClick={unlike}></i>}
       <span onClick={() => setShowLikes(!showLikes)}>{post.likers.length}</span>
-      {showLikes && <CardLike post={post} />}
+      {showLikes && <CardLike />}
     </div>
   );
 };

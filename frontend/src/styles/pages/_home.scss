@@ -54,8 +54,21 @@
       }
       #signup-form {
         margin: 20px;
-        input {
+        label {
           font-weight: bold;
+        }
+        #pseudo,
+        #email,
+        #password,
+        #confirm-password {
+          background-color: $color-secondary;
+          height: 20px;
+          width: 150px;
+          border-radius: 15px;
+        }
+        #submit {
+          @include btn;
+          padding: 5px 15px;
         }
       }
     }

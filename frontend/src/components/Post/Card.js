@@ -83,7 +83,7 @@ const Card = ({ post }) => {
                 ></iframe>
               )}
               <div className="card-footer">
-                {(userData._id === post.postId)(
+                {userData._id === post.postId && (
                   <div className="button-container">
                     <div onClick={() => setIsUpdated(!isUpdated)}>
                       <i className="fas fa-edit"></i>

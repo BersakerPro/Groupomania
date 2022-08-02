@@ -34,7 +34,7 @@ module.exports.updateUser = async (req, res) => {
       { _id: req.params.id },
       {
         $set: {
-          pseudo: req.body.pseudo,
+          bio: req.body.bio,
         },
       },
       { new: true, upsert: true, setDefaultsOnInsert: true }

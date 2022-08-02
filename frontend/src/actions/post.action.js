@@ -82,7 +82,7 @@ export const deletePost = (postId) => {
   return (dispatch) => {
     return axios({
       method: "delete",
-      url: `${process.env.REACT_APP_API_URL}/api/post/${postId}`,
+      url: `${process.env.REACT_APP_API_URL}api/post/${postId}`,
     })
       .then((res) => {
         dispatch({ type: DELETE_POST, payload: { postId } });

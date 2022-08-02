@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import LeftNavBar from "../LeftNavBar";
 import { useDispatch, useSelector } from "react-redux";
-import UploadImage from "./UploadImage";
 import { updateBio } from "../../actions/user.actions";
 import { dateParser } from "../Utils";
 
@@ -9,7 +8,7 @@ const UpdateProfil = () => {
   const [bio, setBio] = useState("");
   const [updateForm, setUpdateForm] = useState(false);
   const userData = useSelector((state) => state.userReducer);
-  const posts = useSelector((state) => state.postReducer);
+  //const posts = useSelector((state) => state.postReducer);
   //const errors = useSelector((state) => state.errorsReducer.userReducer);
   const dispatch = useDispatch();
 

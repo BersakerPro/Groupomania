@@ -1,26 +1,15 @@
-import React, { useState } from "react";
+/*import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { uploadPicture } from "../../actions/user.actions";
 
 //UPLOAD DE L'IMAGE DE PROFIL
 const UploadImage = () => {
   const [file, setFile] = useState();
-  const dispatch = useDispatch();
-  const userData = useSelector((state) => state.userReducer);
-
-  const handlePicture = (e) => {
-    e.preventDefault();
-    const data = new FormData();
-    data.append("name", userData.pseudo);
-    data.append("userId", userData._id);
-    data.append("file", file);
-
-    dispatch(uploadPicture(data, userData._id));
-  };
+  const [name, setName] = useState();
 
   return (
     <div>
-      <form action="" onSubmit={handlePicture} className="upload-pic">
+      <form action="#" className="upload-pic">
         <label htmlFor="file">Changer de photo de profil</label>
         <input
           type="file"
@@ -37,4 +26,4 @@ const UploadImage = () => {
   );
 };
 
-export default UploadImage;
+export default UploadImage;*/

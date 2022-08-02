@@ -4,6 +4,7 @@ const cookieParser = require("cookie-parser");
 require("dotenv").config({ path: "./config/.env" });
 require("./config/db");
 const cors = require("cors");
+const path = require("path");
 
 //MIDDLEWARE
 const { checkUser, requireAuth } = require("./middleware/auth.middleware");
@@ -33,6 +34,9 @@ app.use(cookieParser());
 app.get("*", checkUser);
 app.get("/jwtid", requireAuth, (req, res) => {
   res.status(200).send(res.locals.user._id);
+});
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "index.html"));
 });
 
 //ROUTES

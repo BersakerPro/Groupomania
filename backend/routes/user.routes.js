@@ -1,7 +1,6 @@
 const router = require("express").Router();
 const authControllers = require("../controllers/auth.controller");
 const userController = require("../controllers/user.controller");
-const uploadController = require("../controllers/upload.controller");
 const multer = require("multer");
 const upload = multer();
 
@@ -17,6 +16,8 @@ router.put("/:id", userController.updateUser);
 router.delete("/:id", userController.deleteUser);
 
 //UPLOAD USER
-router.post("/upload", upload.single("file"), uploadController.uploadProfil);
+router.post("/upload", upload.single("file"), (req, res) => {
+  res.send("fichier envoyé");
+});
 
 module.exports = router;

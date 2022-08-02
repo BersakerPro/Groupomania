@@ -28,6 +28,9 @@
           border: solid 1px $color-primary;
           border-top: none;
           border-radius: 0 0 10px 10px;
+          @media screen and (max-width: 838px) {
+            width: 40%;
+          }
         }
         .active-btn {
           background-color: $color-primary;
@@ -35,9 +38,12 @@
         }
       }
       #signin-form {
-        height: 25px;
+        height: 10%;
         margin: 20px;
         display: flex;
+        @media screen and (max-width: 838px) {
+          flex-direction: column;
+        }
         label {
           margin-right: 10px;
           font-weight: bold;
@@ -47,6 +53,9 @@
           margin-right: 20px;
           border-radius: 10px;
           background-color: $color-secondary;
+          @media screen and (max-width: 838px) {
+            height: 25px;
+          }
         }
         #submit {
           @include btn;
@@ -55,6 +64,9 @@
           padding-left: 10px;
           padding-right: 10px;
           margin-left: 15px;
+          @media screen and (max-width: 838px) {
+            margin: auto;
+          }
         }
       }
       #signup-form {

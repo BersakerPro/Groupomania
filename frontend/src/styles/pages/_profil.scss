@@ -7,28 +7,43 @@
     width: 100%;
     margin-top: 20px;
     margin-left: 50px;
+    @media screen and (max-width: 838px) {
+      margin-left: 0;
+    }
 
     h1 {
       width: 20%;
       border-bottom: solid 2px $color-primary;
+      @media screen and (max-width: 838px) {
+        width: 65%;
+        margin-left: 70px;
+      }
     }
 
     .update-container {
       margin: 50px;
       display: flex;
       justify-content: center;
+      @media screen and (max-width: 838px) {
+        flex-direction: column;
+        margin-top: 20px;
+      }
 
       .left-part {
         @include profil-card;
         text-align: center;
         margin-right: 50px;
+        @media screen and (max-width: 838px) {
+          margin: auto;
+          width: 60%;
+        }
 
         h3 {
           margin: 20px;
         }
 
         img {
-          width: 70%;
+          width: 50%;
           border: solid 2px $color-primary;
           border-radius: 50%;
         }
@@ -50,6 +65,10 @@
       .right-part {
         @include profil-card;
         text-align: center;
+        @media screen and (max-width: 838px) {
+          width: 100%;
+          margin-top: 10px;
+        }
 
         h3 {
           margin-top: 20px;
@@ -70,6 +89,9 @@
         h4 {
           text-align: center;
           margin: 50px 0;
+          @media screen and (max-width: 838px) {
+            margin: 20px;
+          }
         }
         span {
           margin: 20px;

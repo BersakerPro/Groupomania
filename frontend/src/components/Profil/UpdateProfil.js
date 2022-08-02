@@ -18,7 +18,7 @@ const UpdateProfil = () => {
     setUpdateForm(false);
   };
 
-  const NumberPost = () => {
+  /*const NumberPost = () => {
     let array = [];
     for (let post of posts) {
       if (post.postId === userData._id) {
@@ -27,7 +27,7 @@ const UpdateProfil = () => {
     }
     console.log(array);
     return array.length;
-  };
+  };*/
 
   return (
     <>
@@ -38,7 +38,6 @@ const UpdateProfil = () => {
           <div className="left-part">
             <h3>Photo de profil</h3>
             <img id="img-profile" src={userData.picture} alt="profil-pic" />
-            <UploadImage />
           </div>
           <div className="right-part">
             <div className="bio">
@@ -68,7 +67,7 @@ const UpdateProfil = () => {
               )}
             </div>
             <h4>Membre depuis le : {dateParser(userData.createdAt)}</h4>
-            <span>Posts : {NumberPost()}</span>
+
             <span>Likes : {userData.likes ? userData.likes.length : 0}</span>
           </div>
         </div>

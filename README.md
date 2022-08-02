@@ -32,4 +32,5 @@ Config du front:
 Créer un fichier .env avec les données suivantes:
 
 REACT_APP_API_URL=http://localhost:5000/
+
 REACT_APP_ADMIN_ID=62e3d88ba9ed6efcc959fd0a

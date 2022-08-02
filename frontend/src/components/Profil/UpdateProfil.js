@@ -9,6 +9,7 @@ const UpdateProfil = () => {
   const [bio, setBio] = useState("");
   const [updateForm, setUpdateForm] = useState(false);
   const userData = useSelector((state) => state.userReducer);
+  const posts = useSelector((state) => state.postReducer);
   //const errors = useSelector((state) => state.errorsReducer.userReducer);
   const dispatch = useDispatch();
 
@@ -17,8 +18,16 @@ const UpdateProfil = () => {
     setUpdateForm(false);
   };
 
-  let img = document.getElementById("img-profile");
-  console.log(img);
+  const NumberPost = () => {
+    let array = [];
+    for (let post of posts) {
+      if (post.postId === userData._id) {
+        array.push(post);
+      }
+    }
+    console.log(array);
+    return array.length;
+  };
 
   return (
     <>
@@ -59,6 +68,7 @@ const UpdateProfil = () => {
               )}
             </div>
             <h4>Membre depuis le : {dateParser(userData.createdAt)}</h4>
+            <span>Posts : {NumberPost()}</span>
             <span>Likes : {userData.likes ? userData.likes.length : 0}</span>
           </div>
         </div>

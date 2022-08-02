@@ -5,8 +5,7 @@ import { dateParser, isEmpty } from "../Utils";
 import DeleteCard from "./DeleteCard";
 import LikeButton from "./LikeButton";
 
-//CARTE D'UN POST
-const Card = ({ post }) => {
+const CardAdmin = ({ post }) => {
   const [isLoading, setIsLoading] = useState(true);
   const usersData = useSelector((state) => state.usersReducer);
   const userData = useSelector((state) => state.userReducer);
@@ -77,13 +76,14 @@ const Card = ({ post }) => {
                   src={post.video}
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media;
-                                    gyroscope; picture-in-picture"
+                                      gyroscope; picture-in-picture"
                   allowFullScreen
                   title={post._id}
                 ></iframe>
               )}
               <div className="card-footer">
-                {(userData._id === post.postId)(
+                {(userData._id === post.postId ||
+                  userData._id === process.env.REACT_APP_ADMIN_ID) && (
                   <div className="button-container">
                     <div onClick={() => setIsUpdated(!isUpdated)}>
                       <i className="fas fa-edit"></i>
@@ -103,4 +103,4 @@ const Card = ({ post }) => {
   );
 };
 
-export default Card;
+export default CardAdmin;

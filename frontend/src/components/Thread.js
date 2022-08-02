@@ -1,44 +1,46 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPosts } from "../actions/post.action";
 import { isEmpty } from "./Utils";
 import Card from "./Post/Card";
+import { UseridContext } from "./AppContent";
+import CardAdmin from "./Post/CardAdmin";
 
 //COMPONENT DU FLUX D'ACTUALITE DES POSTS
 const Thread = () => {
-  const [loadPost, setLoadPost] = useState(true);
+  const [IsAdmin, setIsAdmin] = useState(false);
   const dispatch = useDispatch();
   const posts = useSelector((state) => state.postReducer);
-
-  const loadMore = () => {
-    if (
-      window.innerHeight + document.documentElement.scrollTop + 1 >
-      document.scrollingElement.scrollHeight
-    ) {
-      setLoadPost(true);
-    }
-  };
+  const userid = useContext(UseridContext);
 
   useEffect(() => {
-    if (loadPost) {
-      dispatch(getPosts());
-      setLoadPost(false);
+    dispatch(getPosts());
+    if (userid === process.env.REACT_APP_ADMIN_ID) {
+      setIsAdmin(true);
     }
-
-    window.addEventListener("scroll", loadMore);
-    return () => window.removeEventListener("scroll", loadMore);
-  }, [loadPost, dispatch]);
+  }, [userid, dispatch]);
 
   return (
     <div className="post-container">
-      <ul>
-        {!isEmpty(posts[0]) &&
-          posts
-            .map((post) => {
-              return <Card post={post} key={post._id} />;
-            })
-            .reverse()}
-      </ul>
+      {IsAdmin ? (
+        <ul>
+          {!isEmpty(posts[0]) &&
+            posts
+              .map((post) => {
+                return <CardAdmin post={post} key={post._id} />;
+              })
+              .reverse()}
+        </ul>
+      ) : (
+        <ul>
+          {!isEmpty(posts[0]) &&
+            posts
+              .map((post) => {
+                return <Card post={post} key={post._id} />;
+              })
+              .reverse()}
+        </ul>
+      )}
     </div>
   );
 };
